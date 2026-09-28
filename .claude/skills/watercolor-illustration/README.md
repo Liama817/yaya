@@ -1,94 +1,112 @@
 # watercolor-illustration
 
-A minimal Claude Code skill for warm handmade editorial and cookbook artwork:
-watercolor-like washes, colored-pencil and dry-brush marks, delicate imperfect
-contours, natural cheerful color, selective detail, and generous negative space.
-It works across food, objects, plants, animals, and slightly flattened scenes.
+A project-wide visual design system for warm handmade editorial websites and apps.
+It governs typography, colors, layouts, components, surfaces, and illustrations,
+with a cookbook/market-journal character. The original four reference images are
+encoded in the skill and are not needed again.
 
-The house style is permanently written into `SKILL.md`; the original four
-reference images are **not required at runtime**. The workflow covers deliberate
-planning, generation, critique, revision, and consistency across a collection.
-An image-generation tool must be available to create images; otherwise the skill
-provides a ready-to-use prompt. Results depend on the image model and may need revision.
+The name stays the same so existing installations can be updated. This revision
+replaces the earlier illustration-only workflow: project requests now result in
+implemented interface changes, even when image generation is unavailable.
 
-## Files
+## Install and adopt in a project
+
+1. Unzip the download and put the `watercolor-illustration` folder in your project
+   at `.claude/skills/watercolor-illustration/`.
+2. Open Claude Code in that project and run:
 
 ```text
-watercolor-illustration/
-├── SKILL.md
-└── README.md
+/watercolor-illustration Adopt this as the visual design system for this entire
+project. Apply it to all existing pages and shared components, preserve the
+functionality, and record the skill in CLAUDE.md for future visual work.
 ```
 
-## Install in Claude Code
+This first adoption asks Claude to implement the design and save a persistent
+project instruction. Merely copying a skill folder does not execute a redesign.
+The saved instruction points future visual work back to this skill; the project's
+shared design tokens keep subsequent additions consistent.
 
-Unzip the download. From the directory containing `watercolor-illustration/`,
-choose one installation scope.
+If you only want to establish the direction before making visual changes, say:
 
-**Global — available across your local projects:**
+```text
+Read watercolor-illustration and register it as this project's visual design
+system in CLAUDE.md. Do not restyle existing pages yet.
+```
+
+The skill should add a note like this to the project's existing `CLAUDE.md`,
+without replacing other instructions:
+
+```markdown
+## Visual design system
+Use watercolor-illustration as this project's canonical visual design system.
+Read .claude/skills/watercolor-illustration/SKILL.md before visual work.
+Apply it to pages, components, new features, and illustrations.
+Reuse the project's established design tokens.
+```
+
+## Global installation
+
+For availability across local projects, place the folder at:
+
+```text
+~/.claude/skills/watercolor-illustration/
+```
+
+For example, from the directory containing the extracted folder:
 
 ```sh
 mkdir -p ~/.claude/skills
 cp -R watercolor-illustration ~/.claude/skills/
 ```
 
-The resulting entry point is
-`~/.claude/skills/watercolor-illustration/SKILL.md`.
+Then run the adoption request in each project that should use the style. Its
+CLAUDE.md should point to `~/.claude/skills/watercolor-illustration/SKILL.md`.
+Global availability does not automatically impose the style on unrelated projects.
+Project-local installation is useful when the skill should travel with the repo.
+See [Claude Code skills](https://code.claude.com/docs/en/skills) and
+[project instructions](https://code.claude.com/docs/en/memory).
 
-**Project-local — available in one repository:**
+## Everyday use
 
-Place the folder under that project's `.claude/skills/`. From the project root,
-replace the example source path below with the extracted folder's actual path:
-
-```sh
-mkdir -p .claude/skills
-cp -R /path/to/watercolor-illustration .claude/skills/
-```
-
-The resulting entry point is
-`.claude/skills/watercolor-illustration/SKILL.md`.
-
-See [Claude Code's skill documentation](https://code.claude.com/docs/en/skills)
-for skill locations and invocation behavior.
-
-## Use
-
-Invoke directly in Claude Code:
+After adoption, ordinary feature requests should follow the saved visual direction:
 
 ```text
-/watercolor-illustration A croissant and coffee, with generous white space.
+Add an October view to the seasonal-fruit calendar using our design system.
+
+Build a fruit detail page with seasonality, storage tips, and recipe links.
+
+Update the mobile navigation while preserving our watercolor editorial style.
 ```
 
-Or ask in natural language:
+You can also invoke `/watercolor-illustration` explicitly whenever you want.
+Illustration-only requests remain supported. Actual image generation requires an
+available image tool; missing tools must not stop interface implementation.
 
-```text
-Use the watercolor-illustration skill to create a coordinated set of a fig,
-a persimmon, and a pomegranate for my seasonal fruit page.
+## Test the adoption
 
-Use watercolor-illustration for a garden table scene with a striped cloth,
-a ceramic jug, flowers, and a sleeping cat. Leave room above for a heading.
-```
+Preview the home page, an inner page, and mobile navigation. Check that type,
+colors, spacing, controls, and artwork feel like one family and that interactions
+still work. Then start a fresh conversation and ask for a small new component:
+it should read the saved project instruction and reuse the existing tokens.
+If artwork is missing, Claude should report that gap while delivering the UI.
 
-Specify the subject, intended use, dimensions, and background when they matter.
-You do not need to attach style references again.
+## Update or distribute on GitHub
 
-## Distribute on GitHub
+The package contains only `SKILL.md` and `README.md`. To update an earlier install,
+replace those two files in its existing skill folder, then run the adoption request.
 
-Use this folder as the root of a repository named `watercolor-illustration`,
-with `SKILL.md` and `README.md` at the repository root. Commit and push both files
-to your GitHub repository. No scripts, reference assets, or build step are needed.
-
-Others can download the repository ZIP and install the extracted folder as above,
-or clone it directly into the global skills directory (replace `YOUR-USERNAME`):
+For GitHub distribution, use this folder as a repository root, commit both files,
+and push. Others can download it into their project's `.claude/skills/` directory
+or clone it globally (replace `YOUR-USERNAME`):
 
 ```sh
-mkdir -p ~/.claude/skills
 git clone https://github.com/YOUR-USERNAME/watercolor-illustration.git ~/.claude/skills/watercolor-illustration
 ```
 
-Keep GitHub as the canonical version. Update a clone with `git pull` from its
-folder; for copied installations, replace the installed files with the latest ones.
+Keep the repository as the canonical version and update installed copies as needed.
+No scripts or reference-image assets are required.
 
-The workflow takes philosophical inspiration from Anthropic's
-[frontend-design skill](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md):
-make intentional choices, reject generic defaults, and critique the result.
-The illustration instructions here encode this project's own fixed house style.
+The deliberate planning, implementation, and critique workflow is philosophically
+inspired by Anthropic's [frontend-design skill](https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md).
+The house illustration language is derived from the user's four original references;
+the interface rules translate that language into a usable project design system.
